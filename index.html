@@ -251,7 +251,6 @@ actualizar();
 
 
 
-
 // Consola de comandos
 
 
@@ -302,6 +301,18 @@ document.getElementById("contador").style.display="none";
 if(comando==="/count on"){
 
 document.getElementById("contador").style.display="block";
+
+}
+
+
+
+if(comando==="/count terminado"){
+
+document.getElementById("contador").style.display="none";
+
+document.getElementById("mensaje").innerHTML=
+
+"<div class='final'>¡GRACIAS POR VENIR A MI CUMPLEAÑOS!</div>";
 
 }
 
