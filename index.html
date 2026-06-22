@@ -37,9 +37,7 @@ color:white;
 
 
 h1{
-
 font-size:40px;
-
 }
 
 
@@ -73,7 +71,6 @@ animation:arcoiris 2s infinite;
 }
 
 
-
 #config{
 
 position:fixed;
@@ -83,7 +80,6 @@ font-size:35px;
 cursor:pointer;
 
 }
-
 
 
 #consola{
@@ -100,7 +96,6 @@ border-radius:15px;
 }
 
 
-
 #cmd{
 
 background:#000;
@@ -111,7 +106,6 @@ padding:10px;
 width:220px;
 
 }
-
 
 
 .ubicacion{
@@ -130,6 +124,27 @@ font-weight:bold;
 
 }
 
+
+#musicaBtn{
+
+position:fixed;
+bottom:20px;
+right:20px;
+
+background:#111;
+color:white;
+
+border:0;
+padding:12px;
+
+border-radius:15px;
+cursor:pointer;
+
+font-size:18px;
+
+}
+
+
 </style>
 
 </head>
@@ -138,7 +153,20 @@ font-weight:bold;
 <body>
 
 
+<audio id="musica" autoplay loop>
+
+<source src="video.mp3" type="audio/mpeg">
+
+</audio>
+
+
+
+<button id="musicaBtn">🔊 Música</button>
+
+
+
 <div id="config">⚙️</div>
+
 
 
 <div id="consola">
@@ -149,10 +177,12 @@ font-weight:bold;
 
 
 
+
 <div class="contenedor">
 
 
 <h1>🎉 Mi Cumpleaños 🎉</h1>
+
 
 
 <div id="contador">
@@ -162,13 +192,16 @@ Cargando...
 </div>
 
 
+
 <div id="mensaje"></div>
 
 
 
 <div class="ubicacion">
 
-📍 <a href="https://maps.app.goo.gl/ggMdEB5QXXvAB8A16" target="_blank">
+📍 
+
+<a href="https://maps.app.goo.gl/ggMdEB5QXXvAB8A16" target="_blank">
 
 Plaza San Miguel de Garicoits
 
@@ -182,11 +215,14 @@ Plaza San Miguel de Garicoits
 
 
 
+
+
 <script>
 
 
 const fechaFinal =
 new Date("July 4, 2026 13:00:00").getTime();
+
 
 
 
@@ -224,9 +260,11 @@ let horas=Math.floor(
 );
 
 
+
 let minutos=Math.floor(
 (distancia%(1000*60*60))/(1000*60)
 );
+
 
 
 let segundos=Math.floor(
@@ -235,10 +273,13 @@ let segundos=Math.floor(
 
 
 
+
 document.getElementById("contador").innerHTML=
 
-dias+" días "+horas+" horas "+minutos+" minutos "+segundos+" segundos";
-
+dias+" días "+
+horas+" horas "+
+minutos+" minutos "+
+segundos+" segundos";
 
 }
 
@@ -251,7 +292,8 @@ actualizar();
 
 
 
-// Consola de comandos
+
+// consola
 
 
 let boton=document.getElementById("config");
@@ -269,14 +311,15 @@ if(consola.style.display==="block"){
 
 consola.style.display="none";
 
+
 }else{
 
 consola.style.display="block";
 
 }
 
-
 }
+
 
 
 
@@ -306,9 +349,12 @@ document.getElementById("contador").style.display="block";
 
 
 
+
 if(comando==="/count terminado"){
 
+
 document.getElementById("contador").style.display="none";
+
 
 document.getElementById("mensaje").innerHTML=
 
@@ -323,8 +369,45 @@ input.value="";
 
 }
 
-
 });
+
+
+
+
+
+// música
+
+
+let musica=document.getElementById("musica");
+
+let btn=document.getElementById("musicaBtn");
+
+
+
+btn.onclick=function(){
+
+
+if(musica.paused){
+
+
+musica.play();
+
+btn.innerHTML="🔊 Música";
+
+
+}else{
+
+
+musica.pause();
+
+btn.innerHTML="🔇 Música";
+
+
+}
+
+
+};
+
 
 
 </script>
